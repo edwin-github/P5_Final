@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Midtown Manhattan Neighborhood Map</title>
+    <meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link href="css/style.css" rel="stylesheet">
+    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp"></script>
+    <script src="js/jquery-1.11.3.min.js"></script>
+    <script type="text/javascript" src="js/jquery.collapsible.min.js"></script>
+  </head>
+  
+  <body>
+	  <div id="map-canvas">	  </div>
+	   
+	  <div id="searchui">
+
+		<input id="searchbox" placeholder="Search..." type="search" data-bind="textInput: searchSite">
+        <div id="listCollapse" >
+        	<div id="imgDiv">
+	        	<img id="imgCollapse" src="img/collapse.png" />
+	        </div>
+		  	<ul id="pointList" data-bind="foreach: siteList">
+				<li><div data-bind="text: name, click: function () {$parent.showSite($index)}"></div></li>
+		  	</ul>
+	  	</div>
+	  </div> 
+	<script>
+	/* function to make the list collapsible */
+		$(function() {
+			$('#listCollapse').collapsible('default-open');
+			});
+			
+		$("#imgCollapse").click(function () {
+			if ($("#imgCollapse").attr('src') == 'img/collapse.png')
+			   $("#imgCollapse").attr('src', 'img/expand.png');
+			else
+			   $("#imgCollapse").attr('src', 'img/collapse.png');
+			});
+	</script>  	
+	<script src="js/knockoutB-3.3.0.js"></script>
+    <script src="js/script.js"></script>
+  </body>
+
+</html>	  
